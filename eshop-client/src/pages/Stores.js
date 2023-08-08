@@ -8,14 +8,12 @@ import { AuthContext } from '../AuthContext'
 import { format } from 'date-fns'
 
 import { Grid as LoaderGrid} from  'react-loader-spinner'
-import { Grid, Typography, Box } from '@mui/material' 
-
+import { Grid, Typography, Box } from '@mui/material'  
 
 const Stores = () => {
     const navigate = useNavigate()
     const {loading, error, data} = useQuery(GET_STORES)
-    const { userData } = useContext(AuthContext) 
-    console.log('GET_STORES', data)
+    const { userData } = useContext(AuthContext)  
 
     if(loading) 
     return <Grid container item xs={12} sm={12} md={12} lg={12} mt={6}    
@@ -46,16 +44,16 @@ const Stores = () => {
             </Grid>
  
     return(
-        <Grid container item xs={12} sm={12} md={12} lg={12} mt={3}  
+        <Grid container item xs={12} sm={12} md={12} lg={12} mt={6}  
             alignItems="center"
             justifyContent="center"    
             display="flex" 
             direction="row"      
         >  
-            <Typography sx={{ fontSize: 31, fontWeight: 800}}>
+            <Typography sx={{ color: "#281157", fontSize: 31, fontWeight: 800}}>
                 {userData.firstName} {userData.lastName} Stores
             </Typography>
-            <Grid container item xs={9} sm={12} md={12} lg={11} mt={5}     
+            <Grid container item xs={9} sm={12} md={12} lg={11} mt={4}     
                 alignItems="center"
                 justifyContent="center"    
                 display="flex" 
@@ -69,7 +67,7 @@ const Stores = () => {
                         display="flex"  
                         style={{ borderRadius: '12px' }} 
                     >
-                        <Box style={{border: "none", fontSize: 14, fontSize: 19, fontWeight: 700}} 
+                        <Box style={{border: "none", color: "#281157", fontSize: 14, fontSize: 19, fontWeight: 700}} 
                             onClick={() => navigate('/home/store', { state: {store: item} })}
                         >
                             <Typography sx={{border: "none", fontSize: 14, fontSize: 19, fontWeight: 700}}>

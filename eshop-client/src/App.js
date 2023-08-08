@@ -3,15 +3,11 @@ import { Routes, Route, Outlet } from 'react-router-dom'
 
 import { Grid } from '@mui/material'   
 
-import NavBar from '../src/components/NavBar' 
-import { Unauthenticated } from '../src/components/Unauthenticated' 
- 
-import { RegisterFormDialog } from '../src/components/RegisterFormDialog' 
-import { LoginFormDialog } from '../src/components/LoginFormDialog'
+import NavBar from '../src/components/NavBar'  
 import { Logout } from '../src/pages/Logout'    
-import Stores from '../src/pages/Stores'   
-
-import { RequireAuth } from '../src/components/RequireAuth'  
+import Stores from '../src/pages/Stores'  
+import { Store } from '../src/pages/Store'   
+import { RequireAuth } from './components/RequireAuth'   
 
 const Home = lazy(() => import('../src/pages/Home')) 
 
@@ -42,7 +38,13 @@ function App() {
               />
 
               <Route path="/home" element={<Home />} >
-                  <Route path="/home" element={<Stores />} />      
+                  <Route path="/home" element={<Stores />} />   
+             
+                  <Route path="/home/store" element={
+                      <RequireAuth>
+                          <Store />
+                      </RequireAuth> 
+                  } />   
               </Route>
           </Routes>
       </Grid>

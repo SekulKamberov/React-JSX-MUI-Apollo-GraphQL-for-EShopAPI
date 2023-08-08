@@ -93,45 +93,62 @@ export function LoginFormDialog() {
                 <DialogTitle> </DialogTitle>
 
                 <DialogContent>  
-                    <Grid container item xs={12} sm={12} md={12} lg={12}   
-                        sx={{  height: '100%' }}
-                        //maxWidth= "100%"
+                    <Grid container item xs={12} sm={12} md={12} lg={12} sx={{  height: '150px' }} 
                         direction="row"
                         alignItems="center"
                         justifyContent="center"    
                         display="flex"  
                     > 
-                        <DialogContentText> 
-                            <Typography variant="h4" sx={{color:" #281157", marginBottom: "12px", fontWeight: "500"}}>
-                                SignIn
-                            </Typography> 
-                        </DialogContentText> 
-
+                        <Grid container item xs={12} sm={12} md={12} lg={12}    
+                            direction="row"
+                            alignItems="center"
+                            justifyContent="center"    
+                            display="flex"  
+                        >  
+                                <Typography variant="h4" sx={{color:" #281157", fontWeight: "500"}}>
+                                    SignIn
+                                </Typography>  
+                        </Grid>
                         <form onSubmit={submit} >
-                            <Grid container item mt={1}  
-                                alignItems="center"
-                                justifyContent="center"    
-                                display="flex"  
-                                direction="column"   
-                            > 
-                                <TextField
-                                    fullWidth 
-                                    type="email"
-                                    label="Email Address" 
-                                    name="email" 
-                                    value={values.email}
-                                    onChange={handleInputChange} 
-                                    
-                                />
-
-                                <TextField
-                                    fullWidth 
-                                    type="password"
-                                    label="Password Address" 
-                                    name="password" 
-                                    value={values.password}
-                                    onChange={handleInputChange} 
-                                />
+                            <Grid container item xs={12} sm={12} md={12} lg={12}   
+                                    alignItems="center"
+                                    justifyContent="center"    
+                                    display="flex"  
+                                    direction="row"   
+                                >
+                                    <Grid container item xs={8.4} sm={5.6} md={5.6} lg={5.6} 
+                                        alignItems="center"
+                                        justifyContent="center"    
+                                        display="flex"  
+                                        direction="column"   
+                                    > 
+                                        <TextField
+                                            fullWidth 
+                                            type="email"
+                                            label="Email Address" 
+                                            name="email" 
+                                            value={values.email}
+                                            InputProps={{ style: { fontSize: 12, borderRadius: 9  } }}
+                                            onChange={handleInputChange} 
+                                            
+                                        />
+                                    </Grid>
+                                    <Grid container item xs={8.4} sm={5.6} md={5.6} lg={5.6} ml={2}  
+                                        alignItems="center"
+                                        justifyContent="center"    
+                                        display="flex"  
+                                        direction="column"   
+                                    > 
+                                        <TextField
+                                            fullWidth 
+                                            type="password"
+                                            label="Password Address" 
+                                            name="password" 
+                                            value={values.password}
+                                            InputProps={{ style: { fontSize: 12, borderRadius: 9  } }}
+                                            onChange={handleInputChange} 
+                                        />
+                                    </Grid>
                             </Grid>
                         </form>
                     </Grid>
