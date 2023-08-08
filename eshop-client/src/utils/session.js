@@ -1,11 +1,14 @@
 
 
-function saveSession(name, data) {
+function saveSession(name, data) {    //data.loginUser.tokenData.token
+	console.log('saveSession', name, data)
 	sessionStorage.setItem(name, data)
 }
 
 function recoverSession(name) {
-	return sessionStorage.getItem(name)
+	let opa  = sessionStorage.getItem(name)
+	console.log('opa', opa)
+	return  opa
 }
 
 function deleteSession() {

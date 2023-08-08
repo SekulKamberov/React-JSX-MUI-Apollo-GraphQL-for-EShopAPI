@@ -14,8 +14,7 @@ import { LoginFormDialog } from '../components/LoginFormDialog'
 
 const NavBar = () => {
     const { isAuth } = useContext(AuthContext) 
-	const { userData } = useContext(AuthContext)
-    
+	const { userData } = useContext(AuthContext) 
 
   return (
     <Grid container item xs={12} sm={12} md={12} lg={12} mt={1}
@@ -33,8 +32,8 @@ const NavBar = () => {
         <Grid item ml={2}>{ !isAuth &&  <LoginFormDialog/> } </Grid>
         <Grid item ml={2}>{ !isAuth &&  <RegisterFormDialog/> } </Grid> 
 
-        <Grid item ml={2}>    
-            { isAuth && <Link to='/logout'> { <BsBoxArrowInRight title='Logout'/> } </Link> }
+        <Grid item >    
+            { isAuth && <Link to='/logout'> { <BsBoxArrowInRight size="45" title='Logout'/> } </Link> }
         </Grid>  
 
         {isAuth &&  
@@ -44,8 +43,7 @@ const NavBar = () => {
                 display="flex" 
                 direction="row"      
             >   
-                { !userData.isAdmin && <Typography>Hello, {userData.firstName} {userData.lastName}</Typography> }
-                {  userData.isAdmin && <Typography>Hello, {userData.firstName} You are Admin</Typography> }
+            
             </Grid>  
         }
 

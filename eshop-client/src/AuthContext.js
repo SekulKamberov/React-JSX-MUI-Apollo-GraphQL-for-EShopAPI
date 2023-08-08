@@ -20,8 +20,8 @@ const Provider = ({ children }) => {
     const value = {
         isAuth,
         userData,
-        activateAuth: (data) => {
-            const decodedToken = jwtDecode(data.loginUser.tokenData.token) || {}
+        activateAuth: (data) => { 
+            const decodedToken = jwtDecode(data.loginUser.tokenData.token) || {}  
             const userData = {
                 isActive: true,
 				isAdmin: decodedToken.role === "Admin" ? true : false,
@@ -33,11 +33,11 @@ const Provider = ({ children }) => {
 				gender: data.loginUser.gender,
 				avatar: data.loginUser.avatar,
                 data: data
-            }
-            console.log('decodedToken', decodedToken)
+            } 
             storeUserDataOnSessionStorage(userData)
             setUserData(userData)
-            saveSession('token', decodedToken)
+            saveSession('decodedToken', decodedToken)
+            saveSession('token', data.loginUser.tokenData.token)
             setIsAuth(true)
         },
         removeAuth: () => {

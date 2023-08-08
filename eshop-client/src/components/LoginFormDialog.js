@@ -1,4 +1,4 @@
-import React, { useState } from 'react'  
+import React, { useState, useContext  } from 'react'  
 import { Link, useNavigate } from 'react-router-dom'
 
 import { LOGIN_USER } from '../gql/mutations/auth'
@@ -10,11 +10,14 @@ import DialogContent from '@mui/material/DialogContent'
 import DialogContentText from '@mui/material/DialogContentText'
 import DialogTitle from '@mui/material/DialogTitle'
 
+import { AuthContext } from '../AuthContext'
+
 import useForm from '../utils/useForm'
 
 import { FiLogIn } from "react-icons/fi"
-import { Grid, Box, TextField, Typography, TextareaAutosize, Button } from '@mui/material'
+import { Grid, Box, TextField, Typography, Button } from '@mui/material'
 import { createTheme, ThemeProvider } from '@mui/material/styles'  
+
 const { palette } = createTheme();
 const theme = createTheme({
 	palette: { 
@@ -45,18 +48,19 @@ const initialErrors = {
 }
 
 export function LoginFormDialog() {
-    const [open, setOpen] = useState(false) 
-    const {values, setValues, errors, setErrors} = useForm(initialValues, initialErrors)
+    const [ open, setOpen ] = useState(false) 
+    const { activateAuth } = useContext(AuthContext)
+    const { values, setValues, errors, setErrors } = useForm(initialValues, initialErrors)
 
     const navigate = useNavigate()
 
     const handleClickOpen = () => {
         setOpen(true)
-      }
+    }
   
-      const handleClose = () => {
+    const handleClose = () => {
         setOpen(false)
-      } 
+    } 
 
     const handleInputChange = e => {
         e.preventDefault() 
@@ -66,10 +70,11 @@ export function LoginFormDialog() {
 
     const [submit, { error, data }] = useMutation(LOGIN_USER, { 
         variables: { email: values.email, password: values.password},
-        onCompleted:  () => {
-            setOpen(false)
-            navigate("/home")
-        }
+            onCompleted:  (data) => {
+                activateAuth(data) 
+                    setOpen(false)
+                    navigate("/home")  
+            }
     })
 
     return (

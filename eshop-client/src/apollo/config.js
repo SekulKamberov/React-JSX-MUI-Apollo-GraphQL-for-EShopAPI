@@ -18,8 +18,8 @@ const httpLink = new HttpLink({
 })
 
 const authMiddleware = new ApolloLink((operation, forward) => {
-	const token = recoverSession('token')
-	const authorization = token ? `Bearer ${token}` : ''
+	const token = recoverSession('token') 
+	const authorization = token ? `Bearer ${token}` : '' 
 	operation.setContext(({ headers = {} }) => ({
 		headers: {
 			...headers,

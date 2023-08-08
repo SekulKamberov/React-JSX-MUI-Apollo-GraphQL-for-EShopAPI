@@ -7,8 +7,10 @@ import NavBar from '../src/components/NavBar'
 import { Unauthenticated } from '../src/components/Unauthenticated' 
  
 import { RegisterFormDialog } from '../src/components/RegisterFormDialog' 
-import { LoginFormDialog } from '../src/components/LoginFormDialog' 
-import { Logout } from '../src/pages/Logout'  
+import { LoginFormDialog } from '../src/components/LoginFormDialog'
+import { Logout } from '../src/pages/Logout'    
+import Stores from '../src/pages/Stores'   
+
 import { RequireAuth } from '../src/components/RequireAuth'  
 
 const Home = lazy(() => import('../src/pages/Home')) 
@@ -39,7 +41,9 @@ function App() {
               } 
               />
 
-              <Route path="/" element={<Home />} />
+              <Route path="/home" element={<Home />} >
+                  <Route path="/home" element={<Stores />} />      
+              </Route>
           </Routes>
       </Grid>
 
