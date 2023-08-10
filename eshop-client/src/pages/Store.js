@@ -6,7 +6,9 @@ import { Grid, Typography, Card, Box, Button } from '@mui/material'
 import { createTheme, ThemeProvider } from '@mui/material/styles'  
 
 import { DeleteStoreDialog } from '../components/Store/DeleteStoreDialog' 
-import { EditStoreDialog } from '../components/Store/EditStoreDialog' 
+import { EditStoreDialog } from '../components/Store/EditStoreDialog'  
+import { CreateProductDialog } from '../components/Product/CreateProductDialog'
+import { CreateCategoryDialog } from '../components/Category/CreateCategoryDialog'
 
 
 const { palette } = createTheme() 
@@ -16,15 +18,15 @@ const theme = createTheme({
 			color: {
 				main: "#281157" 
 			}
-		}), 
-	}, 
+		})
+	}
 }) 
 
 export const Store = () => {
     const { state } = useLocation() 
     const store = state.store 
     const navigate = useNavigate()
-
+    
     return(
         <> 
             <Grid container item xs={12} sm={12} md={12} lg={9}   
@@ -41,11 +43,10 @@ export const Store = () => {
                         <DeleteStoreDialog item={store} />
                     </Box> 
                     <Box ml={1}>
-                        <Button color="CatColor" variant="outlined" component={Link} to="/home"  
-                            style={{ borderRadius: '9px', fontSize: 12, maxWidth: "100px", maxHeight: "39px", 
-                            minWidth: "99px", minHeight: "37px", marginBottom: 8 }} >
-                            Products
-                        </Button>
+                        <CreateProductDialog store={store} />
+                    </Box>
+                    <Box ml={1}>
+                        <CreateCategoryDialog />
                     </Box>
                 </ThemeProvider>
             </Grid>

@@ -13,7 +13,7 @@ import DialogTitle from '@mui/material/DialogTitle'
 import useForm from '../utils/useForm'
 
 import { MdOutlineAppRegistration } from "react-icons/md"
-import { Grid, Box, TextField, Typography, TextareaAutosize, Button } from '@mui/material'
+import { Grid, Box, TextField, Typography, Button } from '@mui/material'
 import { createTheme, ThemeProvider } from '@mui/material/styles'  
 const { palette } = createTheme();
 const theme = createTheme({

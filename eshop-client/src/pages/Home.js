@@ -71,23 +71,30 @@ const Home = () => {
                 >    
                     {isAuth && 
                         <> 
-                            <Typography style={{ fontSize: 31, fontWeight: 700, color: "#281157", marginBottom: "18px" }}>
-                                Hello, {userData.gender === "male" ? "Mr." : "Ms."} {userData.lastName}
-                            </Typography>
-                            {userData.isAdmin === true  &&  
-                                <Grid container item xs={12} sm={12} md={12} lg={12} 
+                            <Grid container item xs={12} sm={12} md={12} lg={12} 
                                 alignItems="center"
                                 justifyContent="center"    
                                 display="flex" 
                                 direction="column"      
                             > 
-                                <Typography style={{ fontSize: 21, fontWeight: 800, color: "#281157", marginBottom: "1px"}}>
-                                    ADMIN
-                                </Typography>  
+                                <Typography style={{ fontSize: 31, fontWeight: 700, color: "#281157", marginBottom: "18px" }}>
+                                    Hello, {userData.gender === "male" ? "Mr." : "Ms."} {userData.lastName}
+                                </Typography>
+                            </Grid>
+                            {userData.isAdmin === true  &&  
+                                <Grid container item xs={12} sm={12} md={12} lg={12} 
+                                    alignItems="center"
+                                    justifyContent="center"    
+                                    display="flex" 
+                                    direction="column"      
+                                > 
+                                    <Typography style={{ fontSize: 21, fontWeight: 800, color: "#281157", marginBottom: "1px"}}>
+                                        ADMIN
+                                    </Typography>  
                                 </Grid>
                             }
                             <Avatar src={userData.avatar} sx={avatarStyle} alt={`${userData.firstName} profile image`} />
-                            </>
+                        </>
                     }    
                         <Grid container item xs={12} sm={12} md={12} lg={12} mt={4}  
                             alignItems="center"
