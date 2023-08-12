@@ -72,7 +72,7 @@ export function CreateCategoryDialog() {
                 <DialogTitle> </DialogTitle>
 
                 <DialogContent>
-                    <Typography variant="h4" sx={{color:" #281157", marginBottom: "12px", fontWeight: "500"}}>
+                    <Typography variant="h4" sx={{color:" #281157", marginBottom: "12px", fontWeight: "800"}}>
                         New Category 
                     </Typography>  
                     <form onSubmit={submit}> 

@@ -1,5 +1,5 @@
 import React, { useState } from 'react' 
-import { useLocation } from 'react-router-dom'
+import { useNavigate, useLocation } from 'react-router-dom'
 import { useMutation } from '@apollo/client'
 import { useQuery } from '@apollo/client' 
 
@@ -29,26 +29,25 @@ const theme = createTheme({
 
 const initialValues = {
     name: '',
-    warranty: 1,
+    warranty: 0,
     description: '',
     avatarUrl: '',
-    price: 2.00,
+    price: 0,
     categoryId: '',
     storeId: ''
 }
 
 export function CreateProductDialog() {
+    const navigate = useNavigate()
     const { state } = useLocation() 
     const store = state.store 
-    console.log('storeId', store.id)
+    
     const [open, setOpen] = useState(false)
     const [values, setValues] = useState(initialValues)
     const {loading, errorCategories, data} = useQuery(GET_CATEGORIES)
     let cat = data?.categories ?? []
-    const [categories, setCategories] = useState(cat)
-    
-    console.log('categories ======', cat)
-    console.log('data ======', data)
+    //const [categories, setCategories] = useState(cat)
+     
 
     const handleClickOpen = () => {
         setOpen(true)
@@ -60,9 +59,7 @@ export function CreateProductDialog() {
 
     const handleInputChange = e => {
         e.preventDefault() 
-        const { name, value } = e.target  
-        console.log('values ===========', values)
-        console.log('values.warranty ===========', typeof values.warranty === "string" ? "string" : "int")
+        const { name, value } = e.target   
         setValues({ ...values, [name]: value  }) 
     }
 
@@ -81,9 +78,10 @@ export function CreateProductDialog() {
         variables: { name: values.name,  warranty: values.warranty,  description: values.description, 
             avatarUrl: values.avatarUrl, price: values.price,  categoryId: values.categoryId,  storeId: store.id },
         onCompleted:  () => {
-            setOpen(false)
-            console.log('values', values)
-            window.location.reload(false)
+            setOpen(false) 
+            navigate("/home")
+            //window.location.reload(false)
+
         }
     })
 
@@ -105,7 +103,7 @@ export function CreateProductDialog() {
                 <DialogTitle> </DialogTitle>
 
                 <DialogContent>
-                    <Typography variant="h4" sx={{color:" #281157", marginBottom: "12px", fontWeight: "500"}}>
+                    <Typography variant="h4" sx={{color:" #281157", marginBottom: "12px", fontWeight: "800"}}>
                         New Product 
                     </Typography>  
                     <form onSubmit={submit}> 
@@ -171,7 +169,7 @@ export function CreateProductDialog() {
                                     name="price"
                                     label="Price"
                                     value={values.price}
-                                    InputProps={{ style: { fontSize: 12, borderRadius: 9  } }}
+                                    InputProps={{ style: { fontSize: 12, borderRadius: 9 }}}
                                     onChange={handleInputMUIHasBug} 
                                 />
                             </Grid>

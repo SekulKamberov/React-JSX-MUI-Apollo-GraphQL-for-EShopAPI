@@ -2,7 +2,7 @@ import { useContext } from 'react'
 import { Link } from 'react-router-dom'
  
 import { Grid } from '@mui/material' 
-import { BsHouse, BsBoxArrowInRight, BsBoxArrowRight } from 'react-icons/bs' 
+import { BsHouse, BsBoxArrowInRight, BsBoxArrowRight } from 'react-icons/bs'  
 import { FiLogIn } from "react-icons/fi"
 
 import { Typography } from '@mui/material' 

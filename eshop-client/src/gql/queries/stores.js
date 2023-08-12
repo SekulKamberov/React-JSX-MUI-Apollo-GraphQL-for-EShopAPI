@@ -11,5 +11,13 @@ query {
     address
     createdAt
     avatarUrl 
+    products {
+        id
+        name
+        description
+        warranty
+        price
+        avatarUrl 
+    }  
   }
 } ` 

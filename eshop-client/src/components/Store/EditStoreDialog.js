@@ -70,7 +70,7 @@ export function EditStoreDialog(props) {
                     display="flex"  
                 > 
                     <DialogContentText> 
-                        <Typography variant="h4" sx={{color:" #281157", marginBottom: "12px", fontWeight: "500"}}>
+                        <Typography variant="h4" sx={{color:" #281157", marginBottom: "12px", fontWeight: "800"}}>
                             Edit  
                         </Typography> 
                     </DialogContentText> 
