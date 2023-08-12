@@ -23,19 +23,16 @@ mutation deleteProduct($id: String!) {
 }`
 
 export const EDIT_PRODUCT = gql`
-mutation editProduct($name: String!, $warranty: Int!, 
+mutation editProduct($id: String!, $name: String!, $warranty: Int!, 
     $description: String!, $avatarUrl: String!, $price: Decimal!, 
     $categoryId: String!, $storeId: String!) {
-        editProduct (input: { name: $name,  warranty: $warranty,  description: $description, 
+        editProduct (input: { id: $id, name: $name,  warranty: $warranty,  description: $description, 
         avatarUrl: $avatarUrl, price: $price,  categoryId: $categoryId,  storeId: $storeId }) {
             id
             name
             warranty
-            description
-            description
+            description 
             avatarUrl
-            price
-            categoryId
-            storeId
+            price 
         }
 }`

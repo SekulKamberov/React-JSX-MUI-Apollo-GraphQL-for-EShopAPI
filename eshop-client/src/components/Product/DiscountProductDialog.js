@@ -23,7 +23,7 @@ const theme = createTheme({
 	}
 }) 
 
-export function DeleteStoreDialog(props) {
+export function DiscountProductDialog(props) {
     const { item } = props
     const [open, setOpen] = useState(false) 
 
@@ -51,10 +51,8 @@ export function DeleteStoreDialog(props) {
     <ThemeProvider theme={theme}>
         <Box>
             <Button color="CatColor" variant="outlined" onClick={handleClickOpen}
-                style={{ borderRadius: '9px', border: "1px solid #281157", fontWeight: 600, fontSize: 12, 
-                maxWidth: "91px", maxHeight: "39px", minWidth: "90px", minHeight: "37px", marginBottom: 8 }}>
-                Delete
-            </Button>
+                style={{ borderRadius: '9px', border: "1px solid #e8e1eb", fontSize: 12, maxWidth: "91px", maxHeight: "39px", 
+                minWidth: "90px", minHeight: "37px", marginBottom: 8, fontWeight: 400 }}>Discount</Button>
         </Box>
     </ThemeProvider>
 
@@ -68,17 +66,7 @@ export function DeleteStoreDialog(props) {
                 justifyContent="center"    
                 display="flex"  
             > 
-                <DialogContentText> 
-                    <Typography variant="h4" sx={{color:" #281157", marginBottom: "20px", fontWeight: "500"}}>
-                        Are you shure to Delete?  
-                    </Typography>   
-                    <Typography sx={{color:" #281157", fontSize: 31, fontWeight: 800 }}>
-                        {item.name}
-                    </Typography> 
-                    <Typography align='right' sx={{color:" #281157", fontSize: 17, marginBottom: "4px" }}>
-                        <b>ID: </b> {item.id}
-                    </Typography> 
-                </DialogContentText>  
+                 
             </Grid>
         </DialogContent>
         <DialogActions>  
@@ -88,21 +76,7 @@ export function DeleteStoreDialog(props) {
                 display="flex"
                 direction="row"   
             > 
-                <ThemeProvider theme={theme}>
-                    <Box >
-                        <Button type="submit" color="CatColor" size="medium" variant="outlined" 
-                            sx={{ borderRadius: '9px', height: "40px" }} onClick={submit}>
-                            YES
-                        </Button>
-                    </Box>   
-
-                    <Box ml={2}>
-                        <Button color="CatColor" size="medium" variant="outlined" 
-                            sx={{ borderRadius: '9px', height: "40px" }} onClick={handleClose}>
-                            NO
-                        </Button>
-                    </Box>  
-                </ThemeProvider>  
+                  
             </Grid>
         </DialogActions>
     </Dialog>

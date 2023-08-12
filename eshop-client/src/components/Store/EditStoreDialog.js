@@ -24,9 +24,9 @@ const theme = createTheme({
 })  
  
 export function EditStoreDialog(props) {
-    const { item } = props
+    const { item, categories } = props
     const [ open, setOpen ] = useState(false) 
-    const { values, setValues } = useForm(item)
+    const { values, setValues } = useForm({})
 
     const handleClickOpen = () => {
         setOpen(true)
@@ -41,8 +41,8 @@ export function EditStoreDialog(props) {
     }
  
     const [submit, { error, data }] = useMutation(EDIT_STORE, { 
-        variables: { id: values.id, name: values.name, address: values.address, 
-            phoneNumber: values.phoneNumber, description: values.description, avatarUrl: values.avatarUrl },
+        variables: { id: item.id, name: item.name, address: item.address, 
+            phoneNumber: item.phoneNumber, description: item.description, avatarUrl: item.avatarUrl },
         onCompleted:  () => {
             setOpen(false)
             window.location.reload(false)
@@ -53,8 +53,8 @@ export function EditStoreDialog(props) {
     <ThemeProvider theme={theme}>
         <Box>
             <Button color="CatColor" variant="outlined" onClick={handleClickOpen}
-                style={{ borderRadius: '9px', fontSize: 12, maxWidth: "111px", maxHeight: "39px", 
-                minWidth: "110px", minHeight: "37px", marginBottom: 8 }}>Edit Store</Button>
+                style={{ borderRadius: '9px',  border: "1px solid #281157", fontWeight: 600, fontSize: 12, maxWidth: "71px", maxHeight: "39px", 
+                minWidth: "70px", minHeight: "37px", marginBottom: 8 }}>Edit</Button>
         </Box>
     </ThemeProvider>
 
@@ -92,7 +92,7 @@ export function EditStoreDialog(props) {
                                     placeholder='Name'
                                     name="name"
                                     label="Name"
-                                    value={values.name}
+                                    value={item.name}
                                     InputProps={{ style: { fontSize: 12, borderRadius: 9  } }}
                                     onChange={handleInputChange} 
                                 />  
@@ -108,7 +108,7 @@ export function EditStoreDialog(props) {
                                     placeholder='Avatar Url'
                                     name="avatarUrl"
                                     label="Avatar Url"
-                                    value={values.avatarUrl}
+                                    value={item.avatarUrl}
                                     InputProps={{ style: { fontSize: 12, borderRadius: 9  } }}
                                     onChange={handleInputChange} 
                                 /> 
@@ -124,7 +124,7 @@ export function EditStoreDialog(props) {
                                     placeholder='Address'
                                     name="address"
                                     label="Address"
-                                    value={values.address}
+                                    value={item.address}
                                     InputProps={{ style: { fontSize: 12, borderRadius: 9  } }}
                                     onChange={handleInputChange} 
                                 />  
@@ -140,7 +140,7 @@ export function EditStoreDialog(props) {
                                     placeholder='Phone Number'
                                     name="phoneNumber"
                                     label="Phone Number"
-                                    value={values.phoneNumber}
+                                    value={item.phoneNumber}
                                     InputProps={{ style: { fontSize: 12, borderRadius: 9  } }}
                                     onChange={handleInputChange} 
                                 />  
@@ -160,7 +160,7 @@ export function EditStoreDialog(props) {
                                     maxLength={1000} 
                                     type="text" 
                                     name="description"
-                                    value={values.description} 
+                                    value={item.description} 
                                     onChange={handleInputChange}  
                                 />  
                             </Grid>  

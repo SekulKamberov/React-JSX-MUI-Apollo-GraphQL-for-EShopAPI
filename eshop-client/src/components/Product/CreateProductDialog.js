@@ -37,15 +37,17 @@ const initialValues = {
     storeId: ''
 }
 
-export function CreateProductDialog() {
+export function CreateProductDialog(props) {
+    const { categories, storeId } = props
+     console.log('CreateProductDialog - storeId', storeId)
     const navigate = useNavigate()
     const { state } = useLocation() 
-    const store = state.store 
+    //const store = state.store 
     
     const [open, setOpen] = useState(false)
     const [values, setValues] = useState(initialValues)
-    const {loading, errorCategories, data} = useQuery(GET_CATEGORIES)
-    let cat = data?.categories ?? []
+    //const {loading, errorCategories, data} = useQuery(GET_CATEGORIES)
+    //let cat = data?.categories ?? []
     //const [categories, setCategories] = useState(cat)
      
 
@@ -61,6 +63,7 @@ export function CreateProductDialog() {
         e.preventDefault() 
         const { name, value } = e.target   
         setValues({ ...values, [name]: value  }) 
+        console.log('values', values)
     }
 
     const handleInputMUIHasBug = e => {
@@ -72,11 +75,12 @@ export function CreateProductDialog() {
             e.preventDefault()
             const { name, value } = e.target 
             setValues({ ...values, [name]: parseInt(value) }) 
+            console.log('values', values)
     }
 
     const [submit, { error, product }] = useMutation(ADD_PRODUCT, { 
         variables: { name: values.name,  warranty: values.warranty,  description: values.description, 
-            avatarUrl: values.avatarUrl, price: values.price,  categoryId: values.categoryId,  storeId: store.id },
+            avatarUrl: values.avatarUrl, price: values.price,  categoryId: values.categoryId, storeId: storeId },
         onCompleted:  () => {
             setOpen(false) 
             navigate("/home")
@@ -100,12 +104,14 @@ export function CreateProductDialog() {
             </ThemeProvider>
 
             <Dialog open={open} onClose={handleClose} sx={{"& .MuiDialog-paper": { borderRadius: "15px" }}}>
-                <DialogTitle> </DialogTitle>
-
+                <DialogTitle> </DialogTitle> 
                 <DialogContent>
                     <Typography variant="h4" sx={{color:" #281157", marginBottom: "12px", fontWeight: "800"}}>
                         New Product 
                     </Typography>  
+                    <Typography variant="h6" sx={{color:" #281157", marginBottom: "12px" }}>
+                        storeId: {storeId}
+                    </Typography>   
                     <form onSubmit={submit}> 
                         <Grid container item xs={12} sm={12} md={12} lg={12} mt={5}  
                             display="flex"
@@ -144,17 +150,19 @@ export function CreateProductDialog() {
                                     //onInputChange={handleInputChange}
                                     onChange={handleInputChange}
                                 >
-                                    {cat.map((c, idx) => (
-                                        <MenuItem 
-                                            key={idx} 
-                                            value={c.id}
-                                            //style={getStyles(name, personName, theme)}
-                                        >
-                                            {c.name}
-                                        </MenuItem> 
-                                    ))}
-                                </Select>
-
+                                    {categories && categories.length > 0 ? categories?.map((c, idx) => (
+                                            <MenuItem 
+                                                key={idx} 
+                                                value={c.id}
+                                                //style={getStyles(name, personName, theme)}
+                                            >
+                                                {c.name}
+                                            </MenuItem> 
+                                        ))
+                                    :
+                                    ""
+                                    }
+                                </Select> 
                             </Grid>
                              
                             <Grid container item xs={8.4} sm={5.5} md={5.5} lg={5.8} mb={2} mt={2}  

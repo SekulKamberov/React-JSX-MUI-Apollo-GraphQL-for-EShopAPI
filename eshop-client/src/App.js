@@ -6,7 +6,8 @@ import { Grid } from '@mui/material'
 import NavBar from '../src/components/NavBar'  
 import { Logout } from '../src/pages/Logout'    
 import Stores from '../src/pages/Stores'  
-import { Store } from '../src/pages/Store'   
+import { Store } from '../src/pages/Store'    
+import { Product } from '../src/pages/Product'    
 import { RequireAuth } from './components/RequireAuth'   
 
 const Home = lazy(() => import('../src/pages/Home')) 
@@ -45,6 +46,11 @@ function App() {
                           <Store />
                       </RequireAuth> 
                   } />   
+                  <Route path="/home/product" element={
+                      <RequireAuth>
+                          <Product />
+                      </RequireAuth> 
+                  } /> 
               </Route>
           </Routes>
       </Grid>

@@ -23,7 +23,7 @@ const theme = createTheme({
 	}
 }) 
 
-export function DeleteStoreDialog(props) {
+export function DeleteProductDialog(props) {
     const { item } = props
     const [open, setOpen] = useState(false) 
 
@@ -33,11 +33,7 @@ export function DeleteStoreDialog(props) {
   
       const handleClose = () => {
         setOpen(false)
-      } 
-
-    const handleInputChange = e => {
-        e.preventDefault()   
-    }
+      }  
  
     const [submit, { error, data }] = useMutation(DELETE_STORE, { 
         variables: { id: item.id },
@@ -52,9 +48,7 @@ export function DeleteStoreDialog(props) {
         <Box>
             <Button color="CatColor" variant="outlined" onClick={handleClickOpen}
                 style={{ borderRadius: '9px', border: "1px solid #281157", fontWeight: 600, fontSize: 12, 
-                maxWidth: "91px", maxHeight: "39px", minWidth: "90px", minHeight: "37px", marginBottom: 8 }}>
-                Delete
-            </Button>
+                maxWidth: "91px", maxHeight: "39px", minWidth: "90px", minHeight: "37px", marginBottom: 8 }}>Delete</Button>
         </Box>
     </ThemeProvider>
 

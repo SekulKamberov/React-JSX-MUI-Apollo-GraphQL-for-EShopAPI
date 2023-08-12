@@ -30,9 +30,7 @@ const avatarStyle = {
 
 const Home = () => { 
     const { isAuth } = useContext(AuthContext)
-    const { userData } = useContext(AuthContext) 
-    //console.log('isAuth', isAuth)
-    //console.log('userData', userData) 
+    const { userData } = useContext(AuthContext)  
     const location = useLocation()
     let display = location.pathname !== "/home" 
  
@@ -101,16 +99,15 @@ const Home = () => {
                             justifyContent="center"  
                             display="flex" 
                             direction="row"   
-                        >
-                            
+                        > 
                             {display &&
                                 <ThemeProvider theme={theme}> 
                                     <Box mr={1}>
                                         <Button color="CatColor" variant="outlined" component={Link} to="/home"  
-                                            style={{ borderRadius: '9px', fontSize: 17, maxWidth: "125px", maxHeight: "41px", 
-                                                minWidth: "114px", minHeight: "40px", marginBottom: 8 
-                                            }}
-                                        >
+                                            style={{ borderRadius: '9px', border: "2px solid #281157", fontWeight: 700,  
+                                            fontSize: 17, maxWidth: "125px", maxHeight: "41px", minWidth: "114px", 
+                                            minHeight: "40px", marginBottom: 8 
+                                        }}>
                                             Stores
                                         </Button>
                                     </Box> 
@@ -125,8 +122,8 @@ const Home = () => {
                             <ThemeProvider theme={theme}> 
                                 <Box ml={1}>
                                     <Button color="CatColor" variant="outlined" component={Link} to="/profile"  
-                                        style={{ borderRadius: '9px', fontSize: 17, maxWidth: "125px", maxHeight: "41px", 
-                                            minWidth: "114px", minHeight: "40px", marginBottom: 8 
+                                        style={{ borderRadius: '9px',  border: "2px solid #281157", fontWeight: 700, fontSize: 17, 
+                                            maxWidth: "125px", maxHeight: "41px", minWidth: "114px", minHeight: "40px", marginBottom: 8 
                                         }}
                                     >
                                         Profile

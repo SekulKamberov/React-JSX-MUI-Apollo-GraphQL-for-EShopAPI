@@ -13,6 +13,7 @@ import { Grid, Typography, Box } from '@mui/material'
 const Stores = () => {
     const navigate = useNavigate()
     const {loading, error, data} = useQuery(GET_STORES)
+    
     const { userData } = useContext(AuthContext)  
 
     if(loading) 

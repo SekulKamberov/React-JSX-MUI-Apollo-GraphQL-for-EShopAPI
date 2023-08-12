@@ -64,7 +64,7 @@ export function CreateStoreDialog() {
             <ThemeProvider theme={theme}>
                 <Box>
                     <Button color="CatColor" variant="outlined" startIcon={<AddTwoToneIcon sx={{ fontSize: "40px" }} color="#281157"/>}
-                        style={{ borderRadius: '9px', fontSize: 16, marginBottom: 8, maxWidth: "113px", 
+                        style={{ borderRadius: '9px',  border: "2px solid #281157", fontWeight: 700, fontSize: 16, marginBottom: 8, maxWidth: "113px", 
                                 maxHeight: "41px", minWidth: "112px", minHeight: "40px" }} 
                         onClick={handleClickOpen}
                     > 

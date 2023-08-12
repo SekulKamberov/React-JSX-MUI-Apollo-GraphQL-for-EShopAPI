@@ -59,7 +59,7 @@ export function CreateCategoryDialog() {
             <ThemeProvider theme={theme}>
                 <Box>
                     <Button color="CatColor" variant="outlined" startIcon={<AddTwoToneIcon sx={{ fontSize: 40, fontWeight: 800 }} color="#281157"/>}
-                        style={{ borderRadius: '9px', fontSize: 12, marginBottom: 8, maxWidth: "115px", 
+                        style={{ borderRadius: '9px', border: "1px solid #e5dff2", fontWeight: 500, fontSize: 12, marginBottom: 8, maxWidth: "115px", 
                                 maxHeight: "39px", minWidth: "109px", minHeight: "37px" }} 
                         onClick={handleClickOpen}
                     > 
