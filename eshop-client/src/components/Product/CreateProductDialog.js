@@ -53,11 +53,11 @@ export function CreateProductDialog(props) {
 
     const handleClickOpen = () => {
         setOpen(true)
-      }
+    }
   
-      const handleClose = () => {
+    const handleClose = () => {
         setOpen(false)
-      } 
+    } 
 
     const handleInputChange = e => {
         e.preventDefault() 

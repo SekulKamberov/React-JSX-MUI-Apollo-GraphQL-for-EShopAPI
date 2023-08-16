@@ -1,5 +1,3 @@
-
-
 function saveSession(name, data) {    //data.loginUser.tokenData.token
 	console.log('saveSession', name, data)
 	sessionStorage.setItem(name, data)
@@ -36,6 +34,37 @@ function recoverUserDataFromSessionStorage() {
 	return JSON.parse(sessionStorage.getItem('userData'), reviver) || {}
 }
 
+function addproductOnSessionStorage(obj) { 
+	if(!isObjectEmpty(obj)) {
+		return sessionStorage.setItem(obj.name, JSON.stringify(obj)) 
+	} else { 
+		return console.log("Only Object can be passed", obj) 
+	}
+} 
+
+function getCartFromSessionStorage() {
+	const result = [] 
+	const ignore = ["userData", "token", "decodedToken"]
+	for(let i = 0; i < sessionStorage.length; i++) {
+		const key = sessionStorage.key(i)
+		 
+		if(!ignore.includes(key)) {
+			console.log('key', key) 
+			result.push(JSON.parse(sessionStorage.getItem(key)) || {})
+		}
+		result.cost = result.reduce((total, current) => { return total + current }, 0)
+	}
+	return result
+}
+
+const isObjectEmpty = (objectName) => {
+	return (
+	  objectName &&  
+	  Object.keys(objectName).length === 0 &&
+	  objectName.constructor === Object
+	) 
+  }
+
 function deleteUserDataFromSessionStorage() {
 	sessionStorage.removeItem('userData')
 }
@@ -46,5 +75,7 @@ module.exports = {
 	deleteSession,
 	storeUserDataOnSessionStorage,
 	recoverUserDataFromSessionStorage,
-	deleteUserDataFromSessionStorage
+	deleteUserDataFromSessionStorage,
+	addproductOnSessionStorage,
+	getCartFromSessionStorage
 }

@@ -5,6 +5,7 @@ export const GET_STORES = gql`
 query {
   stores {
     id
+    userId
     name
     description
     phoneNumber

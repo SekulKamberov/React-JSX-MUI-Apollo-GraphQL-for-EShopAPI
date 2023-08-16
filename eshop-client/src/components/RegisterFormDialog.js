@@ -52,11 +52,11 @@ export function RegisterFormDialog() {
 
     const handleClickOpen = () => {
         setOpen(true)
-      }
-  
-      const handleClose = () => {
+    }
+
+    const handleClose = () => {
         setOpen(false)
-      } 
+    } 
 
     const handleInputChange = e => {
         e.preventDefault() 
@@ -228,7 +228,7 @@ export function RegisterFormDialog() {
                             <Box ml={2}>
                                 <Button color="CatColor" size="medium" variant="outlined" 
                                     sx={{ borderRadius: '9px', height: "43px" }} onClick={handleClose}>
-                                CANCEL
+                                    CANCEL
                                 </Button>
                             </Box>  
                         </ThemeProvider>  
