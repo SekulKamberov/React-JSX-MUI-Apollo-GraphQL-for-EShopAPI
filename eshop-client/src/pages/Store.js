@@ -3,11 +3,17 @@ import { useLocation, useNavigate } from 'react-router-dom'
 
 import { useQuery } from '@apollo/client'
 import { AuthContext } from '../AuthContext'
-import { addproductOnSessionStorage } from '../utils/session'
+import { addproductOnSessionStorage } from '../utils/session' 
  
 import { BsCurrencyEuro } from 'react-icons/bs'  
 
 import { format } from 'date-fns'
+
+//Notifications
+//https://www.npmjs.com/package/react-notifications-component
+import { Store as storeNotifications} from 'react-notifications-component'
+import 'react-notifications-component/dist/theme.css'
+ 
 
 import { Grid, Typography, Box, Button } from '@mui/material'  
 import { createTheme, ThemeProvider } from '@mui/material/styles'  
@@ -50,6 +56,19 @@ export const Store = () => {
         obj.storeId = storeId
         obj.cartQuantity = 1 
         addproductOnSessionStorage(obj) 
+
+        storeNotifications.addNotification({
+            title: 'ADDED',
+            message: 'Product Added to cart Successfully',
+            type: 'warning',                         // 'default', 'success', 'info', 'warning'
+            container: 'top-right',                // where to position the notifications
+            animationIn: ["animated", "fadeIn"],     // animate.css classes that's applied
+            animationOut: ["animated", "fadeOut"],   // animate.css classes that's applied
+            dismiss: {
+              duration: 3000,
+              onScreen: true 
+            }
+          })
     }
 
     return(

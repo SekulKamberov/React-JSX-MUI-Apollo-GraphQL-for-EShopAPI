@@ -9,7 +9,7 @@ import AddIcon from '@mui/icons-material/Add'
 import RemoveIcon from '@mui/icons-material/Remove'
 
 import { useMutation } from '@apollo/client'
-import { ADD_CART } from '../gql/mutations/cart'
+ 
 
 const { palette } = createTheme() 
 const theme = createTheme({
@@ -79,13 +79,7 @@ const Cart = () => {
         deleteSession(item)
     }
  
-    const [submit, { error, data }] = useMutation(ADD_CART, { 
-        variables: { email: values.email, password: values.password, firstName: values.firstName, 
-            lastName: values.lastName, gender: values.gender, avatar: values.avatar },
-        onCompleted:  () => { 
-            navigate("/home")
-        }
-    }) 
+    
 
   return (
     <Grid container xs={12} sm={12} md={12} lg={6}  
@@ -237,7 +231,7 @@ const Cart = () => {
                 <ThemeProvider theme={theme}>  
                     <Button color="CatColor" variant="outlined" size="large"
                         sx={{ borderRadius: '9px', fontWeight: 800 }} 
-                        onClick={() => submit}
+                       // onClick={ }
                     >
                         Order 
                     </Button> 

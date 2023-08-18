@@ -1,6 +1,7 @@
 import {  lazy } from 'react'  
 import { Routes, Route, Outlet } from 'react-router-dom' 
-
+ 
+import { ReactNotifications } from 'react-notifications-component'
 import { Grid } from '@mui/material'   
 
 import NavBar from '../src/components/NavBar'  
@@ -21,10 +22,11 @@ function App() {
         display="flex" 
         direction="row"         
     > 
+     <ReactNotifications />
         <Grid item xs={10} sm={8} md={6} lg={6}> 
             <NavBar />
         </Grid>
-
+        
         <Grid container item xs={12} sm={12} md={12} lg={12} mt={3}     
             alignItems="center"
             justifyContent="center"    
